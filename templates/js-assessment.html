@@ -178,14 +178,25 @@
   would like to use. Please use jQuery to complete this task.
 </p>
 
+<script src="https://code.jquery.com/jquery.js"></script>
+
 <fieldset>
   <img src="https://s-media-cache-ak0.pinimg.com/236x/d3/e9/fc/d3e9fc222c9bd0d12e0ff126acf7df00.jpg"
        alt="Adorbz" id="kittenz-rule">
+
 </fieldset>
+
 
 <script>
   "use strict";
   // put your code here
+
+  var dogURL = "http://www.doglib.com/wp-content/uploads/ge/german-chocolate-brown-pomeranian-puppiesakita-puppies-adorable-brown-german-shorthaired-pointer-puppies-all-puppies-picture-breed.jpg";
+
+  $("#kittenz-rule").on('dblclick', function () {
+    $("#kittenz-rule").attr("src", dogURL);
+  });
+
 </script>
 
 <div class="hint">
@@ -217,6 +228,21 @@
 <script>
   "use strict";
   // put your code here
+
+  function playGame () {
+    $("#play-guesing-game").prop('disabled', true);
+    var randomNumber = Math.floor((Math.random() * 100) + 1);
+    $("#number-guesing-msg").html("Guess a number!");
+    $("#try-this-number").removeAttr('disabled');
+  }
+
+  function guessNumber () {
+    $("try-this-number").val()
+  }
+
+  $("#-play-guessing-game").on('click', playGame);
+
+
 </script>
 
 
