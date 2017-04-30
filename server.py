@@ -51,7 +51,6 @@ def get_puppies():
     return jsonify(result_data)
 
 
-
 @app.route("/t-rex-attack.json", methods=["POST"])
 def bite_all_the_things():
     """Returns a random destruction reaction and corresponding image."""

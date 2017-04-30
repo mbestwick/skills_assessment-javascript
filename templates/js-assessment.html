@@ -265,8 +265,6 @@
   $("#play-guessing-game").on('click', playGame);
   $("#try-this-number").on('click', checkGuess);
 
-
-
 </script>
 
 
@@ -322,7 +320,7 @@
     var tRexPhoto = $("<img>").attr("src", tRexURL);
 
     //calculate the number eaten by the T-Rex
-    var numDead = Math.floor(Math.random() * 10000);
+    var numDead = Math.floor(Math.random() * 10000).toLocaleString();
 
     //clear and repopulate the appropriate spots
     $("#t-rex-target").val("");
@@ -333,6 +331,14 @@
   }
 
   // put your code here
+
+  $("#t-rex-form").on('submit', chooseTarget);
+
+  function chooseTarget (evt) {
+    evt.preventDefault();
+    var victim = $("#t-rex-target").val();
+    $.post("/t-rex-attack.json", {'attack-target': victim}, showTRexResults);
+  }
 
 </script>
 
