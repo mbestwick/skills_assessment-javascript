@@ -229,18 +229,42 @@
   "use strict";
   // put your code here
 
+  var randomNumber;
+
   function playGame () {
-    $("#play-guesing-game").prop('disabled', true);
-    var randomNumber = Math.floor((Math.random() * 100) + 1);
-    $("#number-guesing-msg").html("Guess a number!");
+    randomNumber = Math.floor((Math.random() * 100) + 1);
+    console.log(randomNumber);
+    // disable the button
+    $("#play-guessing-game").prop('disabled', true);
+
+    // tell user to guess a number
+    $("#number-guessing-msg").html("Guess a number between 1 and 100!");
+    $("#number-guessed").removeAttr('disabled');
     $("#try-this-number").removeAttr('disabled');
   }
 
-  function guessNumber () {
-    $("try-this-number").val()
+  function checkGuess (evt){
+    evt.preventDefault();
+    var numberGuessed = Number($("#number-guessed").val());
+    if (numberGuessed > randomNumber){
+      $("#number-guessing-msg").html("Too high!");
+    }
+    else if (numberGuessed < randomNumber){
+      $("#number-guessing-msg").html("Too low!");
+    }
+    else {
+      $("#number-guessing-msg").html("Congratulations! You got the number!");
+      // disable the guessing form 
+      $("#number-guessed").val('');
+      $("#number-guessed").prop('disabled', true);
+      // enable the play button
+      $("#play-guessing-game").removeAttr('disabled');
+    }
   }
 
-  $("#-play-guessing-game").on('click', playGame);
+  $("#play-guessing-game").on('click', playGame);
+  $("#try-this-number").on('click', checkGuess);
+
 
 
 </script>
